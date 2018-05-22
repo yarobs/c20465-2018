@@ -92,7 +92,7 @@ char **parse_line(char *line, int *nargs) {
 	return tokens;
 } 
 
-char *get_command(char *line) {
+char *get_command(char *line, int *line_idx) {
 	int bufsize = CMD_BUFSIZE, pos = 0, i = 0, got_cmd = 0, in_cmd = 0, c = 0;
 	char *command = malloc(bufsize * sizeof(char*));
 	
@@ -116,8 +116,17 @@ char *get_command(char *line) {
 		pos++;
 		c = line[pos];
 	}
+	*line_idx += pos;
 	command[i] = '\0';
 	return command;
+}
+
+char *get_args(char *line, int *line_idx) {
+	int c, pos = *line_idx;
+	printf("Args: idx: %d\n", *line_idx);
+	c = line[pos+1];
+	printf("Args: c: %c\n", c);
+	return "";
 }
 
 int check_command(char *command) {
@@ -134,9 +143,12 @@ int check_command(char *command) {
 
 int exec_cmd(char *line) {
 	int cmd_l;
-	char *command;
+	int line_idx = 0;
+	int *idx_ptr = &line_idx;
+	char *command, *args;
+	
 
-	command = get_command(line);
+	command = get_command(line, idx_ptr);
 	cmd_l = strlen(command);
 	if (cmd_l == 0) {
 		return 1;
@@ -144,7 +156,11 @@ int exec_cmd(char *line) {
 	if ((check_command(command)) != 0) {
 		return 1;
 	}
-	return 0;
+
+	args = get_args(line, idx_ptr);
+	printf("Exec: args: %s\n", args);
+
+	return 0;	
 }
 
 int print_line(char *line) {
