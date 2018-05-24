@@ -58,7 +58,7 @@ char *get_line(void) {
 	}
 }
 
-char **parse_line(char *line, int *nargs) {
+char **parse_args(char *line, int *idx_ptr, int *nargs) {
 	int bufsize = TOK_BUFSIZE, pos = 0;
 	char **tokens = malloc(bufsize * sizeof(char*));
 	char *token;
@@ -121,12 +121,27 @@ char *get_command(char *line, int *line_idx) {
 	return command;
 }
 
-char *get_args(char *line, int *line_idx) {
-	int c, pos = *line_idx;
-	printf("Args: idx: %d\n", *line_idx);
-	c = line[pos+1];
-	printf("Args: c: %c\n", c);
-	return "";
+char *get_args(char const *line, int *line_idx) {
+	int c, pos = *line_idx, bufsize = ARG_BUFSIZE, i = 0;
+	char *args = malloc(bufsize * sizeof(char*));
+
+	if (!args) {
+		fprintf(stderr, "FATAL: failed to allocate memory");
+		exit(EXIT_FAILURE);
+	}
+
+	printf("Args: pos: %d\n", pos);
+	c = line[pos];
+	while (c != '\n' && c != '\0' && c != EOF) {
+		args[i++] = c;
+		c = line[++pos];
+	}
+
+	args[i]='\0';
+	printf("Args: args len: %lu\n", strlen(args));
+	printf("Args: args: %s\n", args);
+
+	return args;
 }
 
 int check_command(char *command) {
@@ -141,26 +156,21 @@ int check_command(char *command) {
 	return 1;
 }
 
-int exec_cmd(char *line) {
-	int cmd_l;
-	int line_idx = 0;
-	int *idx_ptr = &line_idx;
-	char *command, *args;
-	
+int run_cmd(char *command, char *args) {
+	int i, rc=1;
 
-	command = get_command(line, idx_ptr);
-	cmd_l = strlen(command);
-	if (cmd_l == 0) {
-		return 1;
+	for (i = 0; i < ncmds; i++) {
+		if (strcmp(command, cmds[i].name) == 0) {
+			rc = (*(cmds[i].func))(args, &sets);
+			if (rc == 0) {
+				return 0;
+			} else {
+				return rc;
+			}
+		}
 	}
-	if ((check_command(command)) != 0) {
-		return 1;
-	}
-
-	args = get_args(line, idx_ptr);
-	printf("Exec: args: %s\n", args);
-
-	return 0;	
+	printf("Undefined command: %s\n", command);
+	return 1;
 }
 
 int print_line(char *line) {
@@ -180,22 +190,15 @@ int print_line(char *line) {
 }
 
 int main_loop(void) {
-	/*int nargs = 0;
-	int *nargsp = &nargs;*/
-	char *line;
+	int cmd_l, line_idx = 0, nargs = 0;
+	int *idx_ptr = &line_idx, *nargsp = &nargs;
+	char *line, *command, *raw_args, **args;
 
 	while(1) {
 		printf(PROMPT);
 		line = get_line();
 		if (print_line(line))
 			continue;
-
-		/*if (line_s > 0) {
-			printf("You entered: %s. Size of line: %d\n", line, line_s);
-		}
-		else {
-			continue;
-		}*/
 
 		/*command = parse_line(line, nargsp);
 		printf("Tokens size: %lu\n", sizeof(*command));
@@ -208,10 +211,19 @@ int main_loop(void) {
 		printf("Loop: Token 6: %s\n", command[6]);
 		printf("Loop: Token 7: %s\n", command[7]);
 		printf("Loop: number of args: %d\n", nargs);*/
-		
-		if ((exec_cmd(line)) != 0)
+
+		command = get_command(line, idx_ptr);
+		cmd_l = strlen(command);
+		/* Skip empty line */
+		if (cmd_l == 0) {
+			return 1;
+		}
+		raw_args = get_args(line, idx_ptr);
+
+		if ((run_cmd(command, raw_args)) != 0) {
 			continue;
-		
+		}
+
 		if (strcmp(line,"stop") == 0) {
 			return EXIT_SUCCESS;
 		}
