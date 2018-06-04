@@ -8,8 +8,8 @@ OBJS = $(SRCS:.c=.o)
 $(PROG) : $(OBJS)
 	$(CC) -o $(PROG) $(OBJS) 
 	
-testrun: $(PROG)
-	./$(PROG) < test1 > output
+test: $(PROG)
+	./$(PROG) < test
 #	./$(PROG) < test2 >> output
 #	./$(PROG) < test3 >> output
 	

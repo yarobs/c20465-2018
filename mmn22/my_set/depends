@@ -1,5 +1,125 @@
 myset.o: myset.c set.h util.h
 util.o: util.c set.h util.h
 set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+myset.o: myset.c set.h util.h
+util.o: util.c set.h util.h
+set.o: set.c set.h
+myset.o: myset.c set.h util.h
+util.o: util.c set.h util.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+myset.o: myset.c set.h util.h
+util.o: util.c set.h util.h
+set.o: set.c set.h
+set.o: set.c set.h
 myset.o: myset.c set.h util.h
 myset.o: myset.c set.h util.h
+myset.o: myset.c set.h util.h
+util.o: util.c set.h util.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+myset.o: myset.c set.h util.h
+util.o: util.c set.h util.h
+set.o: set.c set.h
+myset.o: myset.c set.h util.h
+util.o: util.c set.h util.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+myset.o: myset.c set.h util.h
+util.o: util.c set.h util.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h
+set.o: set.c set.h

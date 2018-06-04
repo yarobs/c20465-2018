@@ -14,7 +14,8 @@ sets_arr sets[] = {
 	{"SETC", &SETC},
 	{"SETD", &SETD},
 	{"SETE", &SETE},
-	{"SETF", &SETF}
+	{"SETF", &SETF},
+	{"#", NULL}
 };
 
 cmd cmds[] = {
@@ -58,7 +59,7 @@ char *get_line(void) {
 	}
 }
 
-char **parse_args(char *line, int *idx_ptr, int *nargs) {
+char **parse_args(char *line, int *nargs) {
 	int bufsize = TOK_BUFSIZE, pos = 0;
 	char **tokens = malloc(bufsize * sizeof(char*));
 	char *token;
@@ -69,7 +70,6 @@ char **parse_args(char *line, int *idx_ptr, int *nargs) {
 	}
 	
 	token = strtok(line, TOK_DELIMITER);
-	printf("Parse: token: %s\n", token);
 	while (token != NULL) {
 		tokens[pos] = token;
 		pos++;
@@ -88,7 +88,6 @@ char **parse_args(char *line, int *idx_ptr, int *nargs) {
 	
 	tokens[pos] = NULL;
 	*nargs = pos;
-	printf("Parse: pos: %d nargs: %d\n", pos, *nargs);
 	return tokens;
 } 
 
@@ -130,7 +129,6 @@ char *get_args(char const *line, int *line_idx) {
 		exit(EXIT_FAILURE);
 	}
 
-	printf("Args: pos: %d\n", pos);
 	c = line[pos];
 	while (c != '\n' && c != '\0' && c != EOF) {
 		args[i++] = c;
@@ -138,8 +136,6 @@ char *get_args(char const *line, int *line_idx) {
 	}
 
 	args[i]='\0';
-	printf("Args: args len: %lu\n", strlen(args));
-	printf("Args: args: %s\n", args);
 
 	return args;
 }
@@ -156,12 +152,12 @@ int check_command(char *command) {
 	return 1;
 }
 
-int run_cmd(char *command, char *args) {
+int run_cmd(char *command, char **args, int *nargs) {
 	int i, rc=1;
 
 	for (i = 0; i < ncmds; i++) {
 		if (strcmp(command, cmds[i].name) == 0) {
-			rc = (*(cmds[i].func))(args, &sets);
+			rc = (*(cmds[i].func))(args, nargs, &sets);
 			if (rc == 0) {
 				return 0;
 			} else {
@@ -195,6 +191,7 @@ int main_loop(void) {
 	char *line, *command, *raw_args, **args;
 
 	while(1) {
+		line_idx = 0;
 		printf(PROMPT);
 		line = get_line();
 		if (print_line(line))
@@ -219,8 +216,9 @@ int main_loop(void) {
 			return 1;
 		}
 		raw_args = get_args(line, idx_ptr);
+		args = parse_args(raw_args, nargsp);
 
-		if ((run_cmd(command, raw_args)) != 0) {
+		if ((run_cmd(command, args, nargsp)) != 0) {
 			continue;
 		}
 
