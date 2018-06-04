@@ -9,7 +9,7 @@
 int c;
 
 int is_permutation_old(char * word, const char * str) {
-	int i, k, j=0;
+	int i, k;
 	char perm[strlen(str)];
 	printf("Hello permut: word: %s str: %s\n", word, str);
 	for (i=0; i < strlen(str); i++) {
@@ -35,16 +35,17 @@ int is_permutation(char * word, const char * str) {
 	//printf("Hello permut: word: %s str: %s\n", word, str);
 	for (i = 0, j = 0; word[i] != '\0'; i++) {
 		for (k = 0; str[k] != '\0'; k++) {
+			//printf("Perm: str[%d]: %c word[%d]: %c\n", i, str[i], k, word[k]);
 			if (word[i] == str[k]) {
-				state = IN;
+				//printf("Perm f 1.0: str[%d]: %c word[%d]: %c\n", k, str[k], i, word[i]);
 				perm[j++] = word[i];
-			} else if (state == IN) {
-				state = OUT;
 			}
 		}
+		//printf("Perm: j: %d k: %d\n", j, k);
 		if (j == k) {
 			perm[k] = '\0';
 			printf("%s\n", perm);
+			j = 0;
 		}
 	}
 	
