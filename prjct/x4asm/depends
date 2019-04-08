@@ -1,0 +1,18 @@
+label.o: src/label.c src/label.h src/x4asm.h src/parser.h
+x4asm.o: src/x4asm.c src/x4asm.h
+parser.o: src/parser.c src/label.h src/x4asm.h src/x4encode.h \
+ src/parser.h
+x4encode.o: src/x4encode.c src/data.h src/x4asm.h src/x4encode.h
+main.o: src/main.c src/assembler.h src/x4asm.h
+assembler.o: src/assembler.c src/assembler.h src/x4asm.h src/data.h \
+ src/label.h src/parser.h src/x4encode.h
+data.o: src/data.c src/data.h src/x4asm.h
+label.o: src/label.c src/label.h src/x4asm.h src/parser.h
+parser.o: src/parser.c src/label.h src/x4asm.h src/x4encode.h \
+ src/parser.h
+x4encode.o: src/x4encode.c src/data.h src/x4asm.h src/x4encode.h
+main.o: src/main.c src/assembler.h src/x4asm.h
+assembler.o: src/assembler.c src/assembler.h src/x4asm.h src/data.h \
+ src/label.h src/parser.h src/x4encode.h
+assembler.o: src/assembler.c src/assembler.h src/x4asm.h src/data.h \
+ src/label.h src/parser.h src/x4encode.h

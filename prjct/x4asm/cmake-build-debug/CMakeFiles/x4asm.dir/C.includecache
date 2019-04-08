@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/yarob/c/c20465/prjct/x4asm/assembler.c
+assert.h
+-
+ctype.h
+-
+malloc.h
+-
+errno.h
+-
+stdarg.h
+-
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+assembler.h
+/home/yarob/c/c20465/prjct/x4asm/assembler.h
+
+/home/yarob/c/c20465/prjct/x4asm/assembler.h
+
+/home/yarob/c/c20465/prjct/x4asm/main.c
+stdlib.h
+-
+stdio.h
+-
+assembler.h
+/home/yarob/c/c20465/prjct/x4asm/assembler.h
+

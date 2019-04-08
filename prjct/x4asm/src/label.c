@@ -1,6 +1,3 @@
-/*
-* Created by inna on 8/18/18.
-*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

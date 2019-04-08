@@ -1,8 +1,3 @@
-/*
-* Created by inna on 8/18/18.
-*/
-
-
 #include <assert.h>
 #include <stdlib.h>
 #include "data.h"

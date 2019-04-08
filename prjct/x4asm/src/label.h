@@ -1,7 +1,3 @@
-/*
-* Created by inna on 8/18/18.
-*/
-
 /*#include "assembler.h"*/
 #include "x4asm.h"
 

@@ -1,7 +1,3 @@
-/*
- Created by inna on 7/28/18.
-*/
-
 /* This is assembler of an imaginary computer with 14 bit CPU.
  * It has 256 cells of RAM and 8 registers. The CPU
  * has 16 instructions. It can work with signed integer numbers and

@@ -1,7 +1,3 @@
-/*
-* Created by inna on 8/18/18.
-*/
-
 #define MAX_LBL_SIZE  31
 #define MAX_DIR_SIZE  32
 #define MAX_LINE_SIZE 80

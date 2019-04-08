@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/x4asm.dir/src/main.c.o CMakeFiles/x4asm.dir/src/assembler.c.o CMakeFiles/x4asm.dir/src/label.c.o CMakeFiles/x4asm.dir/src/x4asm.c.o CMakeFiles/x4asm.dir/src/parser.c.o CMakeFiles/x4asm.dir/src/x4encode.c.o CMakeFiles/x4asm.dir/src/data.c.o  -o x4asm 

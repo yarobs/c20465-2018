@@ -1,8 +1,3 @@
-/*
-* Created by inna on 8/18/18.
-*/
-
-
 #ifndef X4ASM_PARSER_H
 #define X4ASM_PARSER_H
 #include "x4asm.h"

@@ -1,7 +1,3 @@
-/*
- Created by inna on 7/28/18.
-*/
-
 #include "x4asm.h"
 
 #ifndef X4ASM_ASSEMBLER_H

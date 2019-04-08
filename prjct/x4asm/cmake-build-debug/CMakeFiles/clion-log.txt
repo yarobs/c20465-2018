@@ -1,0 +1,4 @@
+/home/yarob/tools/clion/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/yarob/c/c20465/prjct/x4asm
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/yarob/c/c20465/prjct/x4asm/cmake-build-debug
